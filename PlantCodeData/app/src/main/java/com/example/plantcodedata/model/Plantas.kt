@@ -1,16 +1,14 @@
 package com.example.plantcodedata.model
 
 import android.util.Log
-import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import javax.security.auth.callback.Callback
+
 
 data class Plantas(
     val foto: String = "", //URL da Imagem
-    val nome: String = "",
     val descricao: String = "",
+    val nome: String = "",
+    val categoria: String = "",
     val familia: String = " " ,
     val modo_de_uso: String = "",
     val finalidades: String = "",

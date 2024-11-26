@@ -37,9 +37,9 @@ class MainActivity : ComponentActivity() {
 
                 // Criando um novo administrador
                 val novoAdministrador = Administrador(
-                    nome = "Douglas",
-                    email = "Douglas.Cruz@example.com",
-                    senha = "AGARAGAN"
+                    nome = "Sergio",
+                    email = "Sergio.Garcez@example.com",
+                    senha = "SOUFÃDOCRUZZMANN"
                 )
 
                 // Adicionando o administrador ao Firestore
@@ -52,12 +52,13 @@ class MainActivity : ComponentActivity() {
                 }
                 val novaPlanta = Plantas(
                     foto = "https://www.google.com",
-                    nome = "Cipó-alho",
                     descricao =
-                    "O cipó-alho (Mansoa alliacea) é uma trepadeira perenifólia, de pequeno porte, da família das Bignoniáceas, a mesma família dos Ipês. Ela apresenta florescimento ornamental, além de interessantes qualidades condimentares e medicinais",
-                    familia = "Bignoniaceae" ,
+                    "é uma planta ornamental com folhas grandes, vistosas e verdes, com manchas brancas irregulares",
+                    nome = "Comigoo-ninguém-pode/Dieffenbachia seguine",
+                    categoria = "Proteção",
+                    familia = "Araceae" ,
                     modo_de_uso = "Banho",
-                    finalidades = "Moleza e Olho Grande",
+                    finalidades = "Deixar em frente de casa",
                     partes_usadas= "Completa"
                 )
                 //Adicionando Planta ao Firestore
