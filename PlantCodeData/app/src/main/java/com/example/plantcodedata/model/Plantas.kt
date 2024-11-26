@@ -8,7 +8,6 @@ import com.google.firebase.ktx.Firebase
 import javax.security.auth.callback.Callback
 
 data class Plantas(
-    val id: String? = null, //Será gerado pelo firestore
     val foto: String = "", //URL da Imagem
     val nome: String = "",
     val descricao: String = "",

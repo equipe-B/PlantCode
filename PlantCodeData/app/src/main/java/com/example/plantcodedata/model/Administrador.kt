@@ -16,7 +16,6 @@ class MyApplication : Application() {
 
 
 data class Administrador(
-    val id: String? = null, // O ID será gerado automaticamente pelo Firestore
     val nome: String,
     val email: String,
     val senha: String // Usando um inteiro para o ano de nascimento, você pode mudar para String ou outra estrutura se preferir
@@ -43,7 +42,7 @@ class AdministradorRepository {
     // Função para adicionar administrador
     fun adicionarAdministrador(administrador: Administrador, callback: (String?) -> Unit) {
         // Referência para a coleção de administradores
-        val administradoresCollection = firestore.collection("administradores")
+        val administradoresCollection = firestore.collection("Administradores")
 
         // Adiciona o documento
         administradoresCollection

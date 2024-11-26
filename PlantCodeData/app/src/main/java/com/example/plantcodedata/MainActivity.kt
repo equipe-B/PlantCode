@@ -53,7 +53,8 @@ class MainActivity : ComponentActivity() {
                 val novaPlanta = Plantas(
                     foto = "https://www.google.com",
                     nome = "Cipó-alho",
-                    descricao = "O cipó-alho (Mansoa alliacea) é uma trepadeira perenifólia, de pequeno porte, da família das Bignoniáceas, a mesma família dos Ipês. Ela apresenta florescimento ornamental, além de interessantes qualidades condimentares e medicinais",
+                    descricao =
+                    "O cipó-alho (Mansoa alliacea) é uma trepadeira perenifólia, de pequeno porte, da família das Bignoniáceas, a mesma família dos Ipês. Ela apresenta florescimento ornamental, além de interessantes qualidades condimentares e medicinais",
                     familia = "Bignoniaceae" ,
                     modo_de_uso = "Banho",
                     finalidades = "Moleza e Olho Grande",
