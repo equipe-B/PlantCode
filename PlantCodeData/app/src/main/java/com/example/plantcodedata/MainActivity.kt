@@ -1,4 +1,5 @@
 package com.example.plantcodedata
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,15 +13,17 @@ import androidx.compose.material3.Surface
 import com.example.plantcodedata.model.AdministradorRepository
 import com.example.plantcodedata.model.Administrador
 import com.example.plantcodedata.ui.theme.SeuPacoteTheme
-import com.google.firebase.FirebaseApp
 
 class MainActivity : ComponentActivity() {
     private val TAG = "MainActivity"
-    private val administradorRepository = AdministradorRepository()
+    private lateinit var administradorRepository: AdministradorRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FirebaseApp.initializeApp(this);
+
+        // Inicialização do administradorRepository
+        administradorRepository = AdministradorRepository()
+
         enableEdgeToEdge()
 
         setContent {
@@ -45,7 +48,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-
     }
 }
 
@@ -63,4 +65,3 @@ fun PreviewMainScreen() {
         MainScreen()
     }
 }
-
