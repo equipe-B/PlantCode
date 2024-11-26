@@ -14,7 +14,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     navigateToLogin: () -> Unit,
     navigateToCategories: () -> Unit,
-    navigateToSettings: () -> Unit // Parâmetro para navegar para a tela de Configurações
+    navigateToSettings: () -> Unit,
+    navigateToUserProfile: () -> Unit // Parâmetro para navegar para o Perfil do Usuário
 ) {
     Column(
         modifier = modifier
@@ -46,6 +47,14 @@ fun HomeScreen(
         ) {
             Text(text = "Configurações")
         }
+
+        // Botão para ir para a tela de Perfil do Usuário
+        Button(
+            onClick = navigateToUserProfile,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Perfil do Usuário")
+        }
     }
 }
 
@@ -56,7 +65,8 @@ fun HomeScreenPreview() {
         HomeScreen(
             navigateToLogin = {},
             navigateToCategories = {},
-            navigateToSettings = {}
+            navigateToSettings = {},
+            navigateToUserProfile = {}
         )
     }
 }

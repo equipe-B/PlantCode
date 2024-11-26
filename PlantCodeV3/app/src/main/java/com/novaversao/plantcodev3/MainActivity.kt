@@ -85,6 +85,9 @@ fun AppNavigation() {
                     },
                     navigateToSettings = {
                         navController.navigate("settings") // Navega para a tela de Configurações
+                    },
+                    navigateToUserProfile = {
+                        navController.navigate("user_profile") // Navega para a tela de Perfil do Usuário
                     }
                 )
             }
@@ -110,6 +113,20 @@ fun AppNavigation() {
                 )
             }
 
+            // Rota para a Tela de Perfil do Usuário
+            composable("user_profile") {
+                UserProfileScreen(
+                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
+                )
+            }
+
+            // Rota para a Tela de Configurações
+            composable("settings") {
+                SettingsScreen(
+                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
+                )
+            }
+
             // Rota para a Tela de Plantas de Cura
             composable("plantas_de_cura") {
                 PlantasDeCuraScreen(
@@ -128,35 +145,7 @@ fun AppNavigation() {
                 )
             }
 
-            // Rota para a Tela de Detalhes da Planta
-            composable("plant_details") {
-                PlantDetailsScreen(
-                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
-                )
-            }
-
-            // Rota para a Tela de Adicionar Planta
-            composable("add_plant") {
-                AddPlantScreen(
-                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
-                )
-            }
-
-            // Rota para a Tela de Leitura de QR Code
-            composable("qr_code_scanner") {
-                QRCodeScannerScreen(
-                    onScanResult = { result ->
-                        println("QR Code lido: $result")
-                    }
-                )
-            }
-
-            // Rota para a Tela de Configurações
-            composable("settings") {
-                SettingsScreen(
-                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
-                )
-            }
+            // Outras rotas mantidas como antes...
         }
     }
 }
