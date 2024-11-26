@@ -35,5 +35,51 @@ class PlantaRepository{
                 callback(null)
             }
     }
+    fun BuscarPlanta(id: String, callback: (Plantas?) -> Unit) {
+        val PlantasCollection = firestore.collection("Plantas").document(id)
 
+        PlantasCollection.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d("PlantaRepository", "Planta encontrada: ${document.id}")
+                    val planta = document.toObject(Plantas::class.java)
+                    callback(planta)
+                } else {
+                    Log.d("PlantaRepository", "Nenhuma planta encontrada com o ID: $id")
+                    callback(null)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("PlantaRepository", "Erro ao buscar planta", exception)
+                callback(null)
+            }
     }
+
+    fun DeletarPlanta(id: String, callback: (Boolean) -> Unit) {
+        val PlantasCollection = firestore.collection("Plantas").document(id)
+
+        PlantasCollection.delete()
+            .addOnSuccessListener {
+                Log.d("PlantaRepository", "Planta deletada com ID: $id")
+                callback(true)
+            }
+            .addOnFailureListener { exception ->
+                Log.e("PlantaRepository", "Erro ao deletar planta", exception)
+                callback(false)
+            }
+    }
+
+    fun EditarPlanta(id: String, plantaAtualizada: Plantas, callback: (Boolean) -> Unit) {
+        val PlantasCollection = firestore.collection("Plantas").document(id)
+
+        PlantasCollection.set(plantaAtualizada)
+            .addOnSuccessListener {
+                Log.d("PlantaRepository", "Planta editada com ID: $id")
+                callback(true)
+            }
+            .addOnFailureListener { exception ->
+                Log.e("PlantaRepository", "Erro ao editar planta", exception)
+                callback(false)
+            }
+    }
+}
