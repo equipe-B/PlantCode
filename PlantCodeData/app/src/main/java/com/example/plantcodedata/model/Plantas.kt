@@ -35,6 +35,7 @@ class PlantaRepository{
                 callback(null)
             }
     }
+
     fun BuscarPlanta(id: String, callback: (Plantas?) -> Unit) {
         val PlantasCollection = firestore.collection("Plantas").document(id)
 

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "62948119848",
-    "project_id": "plantcodeteste",
-    "storage_bucket": "plantcodeteste.firebasestorage.app"
+    "project_number": "151805899774",
+    "project_id": "plantcodedata",
+    "storage_bucket": "plantcodedata.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:62948119848:android:aefe5a7c4fd1c094d2ac1d",
+        "mobilesdk_app_id": "1:151805899774:android:2f1f48a94c1394a7ed86af",
         "android_client_info": {
           "package_name": "com.example.plantcodedata"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCnbZa8RRilYrBAD9J6oPcJwZ3GdD81VfI"
+          "current_key": "AIzaSyAuS8YhhoDI0HyOtD16_XkrxxvcpoVRm18"
         }
       ],
       "services": {
