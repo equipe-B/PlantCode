@@ -36,9 +36,21 @@ fun AppNavigation() {
     Scaffold(modifier = Modifier.fillMaxSize()) {
         NavHost(
             navController = navController,
-            startDestination = "login", // Tela inicial do aplicativo
+            startDestination = "access_type", // Tela inicial: Escolha do Tipo de Acesso
             modifier = Modifier.fillMaxSize()
         ) {
+            // Rota para a Tela de Escolha do Tipo de Acesso
+            composable("access_type") {
+                AccessTypeScreen(
+                    navigateToAdminLogin = {
+                        navController.navigate("login") // Navega para a tela de Login (Administrador)
+                    },
+                    navigateToVisitorLogin = {
+                        navController.navigate("login") // Navega para a tela de Login (Visitante)
+                    }
+                )
+            }
+
             // Rota para a Tela de Login
             composable("login") {
                 LoginScreen(
@@ -50,6 +62,9 @@ fun AppNavigation() {
                     },
                     navigateToHome = {
                         navController.navigate("home") // Navega para a tela Inicial
+                    },
+                    navigateBackToAccessType = {
+                        navController.popBackStack("access_type", false) // Volta para a tela de Escolha do Tipo de Acesso
                     }
                 )
             }
@@ -113,13 +128,6 @@ fun AppNavigation() {
                 )
             }
 
-            // Rota para a Tela de Perfil do Usuário
-            composable("user_profile") {
-                UserProfileScreen(
-                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
-                )
-            }
-
             // Rota para a Tela de Configurações
             composable("settings") {
                 SettingsScreen(
@@ -127,21 +135,10 @@ fun AppNavigation() {
                 )
             }
 
-            // Rota para a Tela de Plantas de Cura
-            composable("plantas_de_cura") {
-                PlantasDeCuraScreen(
-                    navigateBackToCategories = {
-                        navController.popBackStack("categories", false) // Volta para a tela de Categorias
-                    }
-                )
-            }
-
-            // Rota para a Tela de Plantas de Proteção
-            composable("plantas_de_protecao") {
-                PlantasDeProtecaoScreen(
-                    navigateBackToCategories = {
-                        navController.popBackStack("categories", false) // Volta para a tela de Categorias
-                    }
+            // Rota para a Tela de Perfil do Usuário
+            composable("user_profile") {
+                UserProfileScreen(
+                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
                 )
             }
 
