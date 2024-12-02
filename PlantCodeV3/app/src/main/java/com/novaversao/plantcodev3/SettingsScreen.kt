@@ -72,7 +72,7 @@ fun SettingsScreen(
 
         // Botão de Voltar
         Button(
-            onClick = navigateBack,
+            onClick = navigateBack, // Agora navegando corretamente para a tela anterior
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Voltar")

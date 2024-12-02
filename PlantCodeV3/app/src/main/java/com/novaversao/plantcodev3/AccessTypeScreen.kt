@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,7 +30,7 @@ fun AccessTypeScreen(
     ) {
         // Logotipo
         Image(
-            painter = painterResource(id = R.drawable.logo_ifam), // Nome correto do arquivo de imagem
+            painter = painterResource(id = R.drawable.logo_ifam),
             contentDescription = "Logotipo do PlantCode",
             modifier = Modifier
                 .size(120.dp)
@@ -64,19 +65,21 @@ fun AccessTypeScreen(
         // Botão para Administrador
         Button(
             onClick = navigateToAdminLogin,
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)), // Verde claro
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
         ) {
-            Text(text = "Administrador")
+            Text(text = "Administrador", color = Color.White)
         }
 
         // Botão para Visitante
         Button(
             onClick = navigateToVisitorLogin,
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)), // Verde claro
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Visitante")
+            Text(text = "Visitante", color = Color.White)
         }
     }
 }

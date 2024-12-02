@@ -14,9 +14,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
 
-// Importação necessária para o componente Text
-import androidx.compose.material3.Text
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,113 +33,90 @@ fun AppNavigation() {
     Scaffold(modifier = Modifier.fillMaxSize()) {
         NavHost(
             navController = navController,
-            startDestination = "access_type", // Tela inicial: Escolha do Tipo de Acesso
+            startDestination = "access_type", // Tela inicial
             modifier = Modifier.fillMaxSize()
         ) {
-            // Rota para a Tela de Escolha do Tipo de Acesso
             composable("access_type") {
                 AccessTypeScreen(
-                    navigateToAdminLogin = {
-                        navController.navigate("login") // Navega para a tela de Login (Administrador)
-                    },
-                    navigateToVisitorLogin = {
-                        navController.navigate("login") // Navega para a tela de Login (Visitante)
-                    }
+                    navigateToAdminLogin = { navController.navigate("login") },
+                    navigateToVisitorLogin = { navController.navigate("login") }
                 )
             }
 
-            // Rota para a Tela de Login
             composable("login") {
                 LoginScreen(
-                    navigateToRegister = {
-                        navController.navigate("register") // Navega para a tela de Cadastro
-                    },
-                    navigateToForgotPassword = {
-                        navController.navigate("forgot_password") // Navega para a tela de Recuperação de Senha
-                    },
-                    navigateToHome = {
-                        navController.navigate("home") // Navega para a tela Inicial
-                    },
-                    navigateBackToAccessType = {
-                        navController.popBackStack("access_type", false) // Volta para a tela de Escolha do Tipo de Acesso
-                    }
+                    navigateToRegister = { navController.navigate("register") },
+                    navigateToForgotPassword = { navController.navigate("forgot_password") },
+                    navigateToHome = { navController.navigate("home") },
+                    navigateBackToAccessType = { navController.popBackStack("access_type", false) }
                 )
             }
 
-            // Rota para a Tela de Cadastro
             composable("register") {
                 RegisterScreen(
-                    navigateBackToLogin = {
-                        navController.popBackStack() // Volta para a tela de Login
-                    }
+                    navigateBackToLogin = { navController.popBackStack() },
+                    navigateToHome = { navController.navigate("home") }
                 )
             }
 
-            // Rota para a Tela de Recuperação de Senha
             composable("forgot_password") {
                 ForgotPasswordScreen(
-                    navigateBackToLogin = {
-                        navController.popBackStack() // Volta para a tela de Login
-                    }
+                    navigateBackToLogin = { navController.popBackStack() }
                 )
             }
 
-            // Rota para a Tela Inicial (Home)
             composable("home") {
                 HomeScreen(
-                    navigateToLogin = {
-                        navController.navigate("login") {
-                            popUpTo("login") { inclusive = true }
-                        }
-                    },
-                    navigateToCategories = {
-                        navController.navigate("categories") // Navega para a tela de Categorias
-                    },
-                    navigateToSettings = {
-                        navController.navigate("settings") // Navega para a tela de Configurações
-                    },
-                    navigateToUserProfile = {
-                        navController.navigate("user_profile") // Navega para a tela de Perfil do Usuário
-                    }
+                    navigateToCategories = { navController.navigate("categories") },
+                    navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
+                    navigateToAddPlant = { navController.navigate("add_plant") },
+                    navigateToSettings = { navController.navigate("settings") }, // Aqui está o parâmetro correto
+                    navigateToPlantasDeCura = { navController.navigate("plantas_de_cura") },
+                    navigateToPlantasDeProtecao = { navController.navigate("plantas_de_protecao") }
                 )
             }
 
-            // Rota para a Tela de Categorias
             composable("categories") {
                 CategoriesScreen(
-                    navigateToPlantasDeCura = {
-                        navController.navigate("plantas_de_cura") // Navega para a tela de Plantas de Cura
-                    },
-                    navigateToPlantasDeProtecao = {
-                        navController.navigate("plantas_de_protecao") // Navega para a tela de Plantas de Proteção
-                    },
-                    navigateToAddPlant = {
-                        navController.navigate("add_plant") // Navega para a tela de Adicionar Planta
-                    },
-                    navigateToQRCodeScanner = {
-                        navController.navigate("qr_code_scanner") // Navega para a tela de Leitura de QR Code
-                    },
-                    navigateToSettings = {
-                        navController.navigate("settings") // Navega para a tela de Configurações
+                    navigateToPlantasDeCura = { navController.navigate("plantas_de_cura") },
+                    navigateToPlantasDeProtecao = { navController.navigate("plantas_de_protecao") },
+                    navigateToAddPlant = { navController.navigate("add_plant") },
+                    navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
+                    navigateToSettings = { navController.navigate("settings") } // Add this line
+                )
+            }
+
+            composable("plantas_de_cura") {
+                PlantasDeCuraScreen(
+                    navigateBackToCategories = { navController.popBackStack("categories", false) }
+                )
+            }
+
+            composable("plantas_de_protecao") {
+                PlantasDeProtecaoScreen(
+                    navigateBackToCategories = { navController.popBackStack("categories", false) }
+                )
+            }
+
+            composable("settings") {
+                SettingsScreen(
+                    navigateBack = { navController.popBackStack() } // Navegação de volta para a tela anterior
+
+
+                )
+            }
+
+            composable("add_plant") {
+                AddPlantScreen(navigateBack = { navController.popBackStack() } )
+            }
+
+            composable("qr_code_scanner") {
+                QRCodeScannerScreen(
+                    onScanResult = { result ->
+                        println("QR Code Scan Result: $result")
                     }
                 )
             }
-
-            // Rota para a Tela de Configurações
-            composable("settings") {
-                SettingsScreen(
-                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
-                )
-            }
-
-            // Rota para a Tela de Perfil do Usuário
-            composable("user_profile") {
-                UserProfileScreen(
-                    navigateBack = { navController.popBackStack() } // Volta para a tela anterior
-                )
-            }
-
-            // Outras rotas mantidas como antes...
         }
     }
 }
