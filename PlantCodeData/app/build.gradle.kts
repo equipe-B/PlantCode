@@ -66,5 +66,10 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth-ktx:22.1.0")
     implementation("com.google.firebase:firebase-firestore:25.1.1")
+    implementation("io.coil-kt:coil-compose:2.1.0")
+    implementation ("androidx.compose.ui:ui:1.4.0") // Verifique se está na versão mais recente
+    implementation ("androidx.compose.material:material:1.4.0")
+    implementation ("androidx.compose.ui:ui-tooling-preview:1.4.0")
+    implementation ("androidx.activity:activity-compose:1.6.0")
 
 }
