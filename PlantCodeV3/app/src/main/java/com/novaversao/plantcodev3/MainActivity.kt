@@ -1,5 +1,6 @@
 package com.novaversao.plantcodev3
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
+import com.novaversao.plantcodev3.model.PlantaRepository
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +29,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AppNavigation() {
     val navController: NavHostController = rememberNavController()
@@ -107,7 +111,11 @@ fun AppNavigation() {
             }
 
             composable("add_plant") {
-                AddPlantScreen(navigateBack = { navController.popBackStack() } )
+                val plantaRepository = PlantaRepository()
+                AddPlantScreen(
+                    plantaRepository = plantaRepository,
+                    navigateBack = { navController.popBackStack() }
+                )
             }
 
             composable("qr_code_scanner") {
