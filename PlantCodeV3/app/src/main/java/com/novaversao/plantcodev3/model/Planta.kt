@@ -6,14 +6,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 data class Plantas(
+    val imagemBase64: String, // Altere para o nome correto aqui
     val descricao: String,
     val nome: String,
     val categoria: String,
     val familia: String,
     val modo_de_uso: String,
     val finalidades: String,
-    val partes_usadas: String,
-    val imagemBase64: String // Altere para o nome correto aqui
+    val partes_usadas: String
+
 )
 class PlantaRepository {
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()

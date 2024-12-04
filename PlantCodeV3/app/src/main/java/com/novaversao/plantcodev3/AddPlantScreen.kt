@@ -1,5 +1,5 @@
 package com.novaversao.plantcodev3
-
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -23,7 +23,8 @@ import androidx.compose.foundation.BorderStroke
 import android.content.Context
 import android.provider.MediaStore
 import java.io.IOException
-
+import androidx.compose.ui.graphics.Color
+import android.util.Base64
 @Composable
 fun AddPlantScreen(
     modifier: Modifier = Modifier,
@@ -36,6 +37,7 @@ fun AddPlantScreen(
     var bitmap by remember { mutableStateOf<Bitmap?>(null) } // Adiciona variável para Bitmap
     val context = LocalContext.current
     var isLoading by remember { mutableStateOf(false) }
+    var isImageConverted by remember { mutableStateOf(false) }
 // Adiciona variável para Bitmap
     // Launcher para selecionar a imagem
     val launcher: ActivityResultLauncher<String> = rememberLauncherForActivityResult(
@@ -68,7 +70,6 @@ fun AddPlantScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Seção de upload da imagem
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -79,7 +80,7 @@ fun AddPlantScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Clique aqui para fazer upload da imagem",
+                text = "Clique aqui para Selecionar a imagem",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center
             )
@@ -90,11 +91,50 @@ fun AddPlantScreen(
                 Text(text = "Selecionar Imagem")
             }
 
-            // Exibir a imagem convertida ou mensagem de erro
-            if (base64Image.isNotEmpty()) {
-                Text(text = "Imagem convertida com sucesso!", color = androidx.compose.ui.graphics.Color.Green)
-            } else if (imageUri != null) {
-                Text(text = "Erro ao converter a imagem.", color = androidx.compose.ui.graphics.Color.Red)
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Button(
+                onClick = {
+                    // Verifica se há uma URI de imagem selecionada
+                    imageUri?.let { uri ->
+                        // Inicia o processo de conversão
+                        isLoading = true
+
+                        try {
+                            // Conversão da imagem para Base64
+                            base64Image = convertImageToBase64(context, uri)
+
+                            // Define o estado de sucesso após a conversão
+                            isImageConverted = true
+                        } catch (e: Exception) {
+                            // Trata erros de conversão
+                            isImageConverted = false
+                        } finally {
+                            // Finaliza o carregamento
+                            isLoading = false
+                        }
+                    }
+                },
+                // Desabilita o botão se nenhuma imagem foi selecionada
+                enabled = imageUri != null
+            ) {
+                Text(text = "Fazer Upload da Imagem")
+            }
+
+            // Mensagens condicionais
+            when {
+                isImageConverted -> {
+                    Text(
+                        text = "Imagem convertida com sucesso!",
+                        color = Color.Green
+                    )
+                }
+                imageUri != null && !isImageConverted -> {
+                    Text(
+                        text = "Erro ao converter a imagem.",
+                        color = Color.Red
+                    )
+                }
             }
 
             // Indicador de carregamento
@@ -102,11 +142,6 @@ fun AddPlantScreen(
                 CircularProgressIndicator(modifier = Modifier.padding(16.dp))
             }
         }
-
-
-
-        Spacer(modifier = Modifier.height(8.dp))
-
         Spacer(modifier = Modifier.height(8.dp))
 
         // Campos de entrada para os dados da planta
@@ -127,10 +162,23 @@ fun AddPlantScreen(
 
 
         // Botão para adicionar a planta
+        // Botão para adicionar a planta
         Button(
             onClick = {
+                // Verifica o tamanho da imagem em Base64
+                val imageSizeInBytes = Base64.decode(base64Image, Base64.DEFAULT).size
+
+                // Verifica se o tamanho da imagem excede 1 MB
+                if (imageSizeInBytes > 1048576) { // 1 MB = 1048576 bytes
+                    // Log e mensagem se a imagem exceder 1 MB
+                    Log.w("AdicionarPlanta", "A imagem excede 1 MB. Tamanho: ${imageSizeInBytes} bytes")
+                    Toast.makeText(context, "A imagem deve ser menor que 1 MB. Selecione outra imagem.", Toast.LENGTH_LONG).show()
+                    return@Button // Retorna sem adicionar a planta
+                }
+
                 // Cria um novo objeto Planta com a imagem em Base64
                 val novaPlanta = Plantas(
+                    imagemBase64 = base64Image,
                     descricao = descricao,
                     nome = nome,
                     categoria = categoria,
@@ -138,16 +186,14 @@ fun AddPlantScreen(
                     modo_de_uso = modoDeUso,
                     finalidades = finalidades,
                     partes_usadas = partesUsadas,
-                    imagemBase64 = base64Image // A imagem em Base64
                 )
 
                 // Chama o método AdicionarPlanta passando a nova planta e o bitmap
-                plantaRepository.AdicionarPlanta(novaPlanta,base64Image) { plantaId ->
+                plantaRepository.AdicionarPlanta(novaPlanta, base64Image) { plantaId ->
                     uploadSuccess = plantaId != null
                     if (uploadSuccess) {
                         // Sucesso na adição da planta
                         Log.d("AdicionarPlanta", "Planta adicionada com ID: $plantaId")
-                        // Aqui você pode chamar navigateBack() se quiser voltar após o sucesso
                         navigateBack() // Descomente se quiser voltar após a adição
                     } else {
                         // Tratar erro ao adicionar planta
@@ -155,11 +201,12 @@ fun AddPlantScreen(
                     }
                 }
             },
-            enabled = imageUri != null && base64Image.isNotEmpty(), // Habilita o botão apenas se uma imagem foi selecionada e convertida
-            modifier = Modifier.fillMaxWidth()
+            enabled = base64Image.isNotEmpty(), // Habilita o botão apenas se uma imagem foi selecionada e convertida
+            modifier = Modifier.fillMaxWidth().padding(8.dp)
         ) {
             Text("Adicionar Planta")
         }
     }
-}
+    }
+
 
