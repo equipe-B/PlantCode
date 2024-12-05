@@ -3,7 +3,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-
+import android.content.Context
+import android.util.Base64
+import android.widget.Toast
 
 data class Plantas(
     val imagemBase64: String, // Altere para o nome correto aqui
@@ -18,7 +20,7 @@ data class Plantas(
 )
 class PlantaRepository {
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-
+    //Trata-se da função de adicionar a planta ao repositório no Firestore Database
     fun AdicionarPlanta(planta: Plantas, imagemBase64: String, callback: (String?) -> Unit) {
         // Cria uma cópia da planta com a imagem em Base64
         val plantaComImagem = planta.copy(imagemBase64 = imagemBase64)
@@ -39,5 +41,37 @@ class PlantaRepository {
                 Log.e("PlantaRepository", "Erro ao adicionar Planta", exception)
                 callback(null)
             }
+    }
+}
+//Módulo criado para comprimir a função de converter a imagem em base64 e salvar no firestore database.
+// Também possui a tratativa para evitar que o usuário insira uma imagem com o tamanho acima de 1 MB.
+fun handleImageConversionAndSave(
+    base64Image: String,
+    context: Context,
+    plantaRepository: PlantaRepository,
+    novaPlanta: Plantas,
+    navigateBack: () -> Unit
+) {
+    // Verifica o tamanho da imagem em Base64
+    val imageSizeInBytes = Base64.decode(base64Image, Base64.DEFAULT).size
+
+    // Verifica se o tamanho da imagem excede 1 MB
+    if (imageSizeInBytes > 1048576) { // 1 MB = 1048576 bytes
+        // Log e mensagem se a imagem exceder 1 MB
+        Log.w("AdicionarPlanta", "A imagem excede 1 MB. Tamanho: ${imageSizeInBytes} bytes")
+        Toast.makeText(context, "A imagem deve ser menor que 1 MB. Selecione outra imagem.", Toast.LENGTH_LONG).show()
+        return // Retorna sem adicionar a planta
+    }
+
+    // Chama a função AdicionarPlanta com um callback
+    plantaRepository.AdicionarPlanta(novaPlanta, base64Image) { plantaId ->
+        if (plantaId != null) {
+            // A planta foi adicionada com sucesso
+            Toast.makeText(context, "Planta adicionada com sucesso!", Toast.LENGTH_SHORT).show()
+            navigateBack() // Navega de volta após o sucesso
+        } else {
+            // Tratar erro ao adicionar a planta
+            Toast.makeText(context, "Erro ao adicionar a planta.", Toast.LENGTH_LONG).show()
+        }
     }
 }
