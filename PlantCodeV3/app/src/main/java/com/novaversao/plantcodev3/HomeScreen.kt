@@ -1,0 +1,79 @@
+package com.novaversao.plantcodev3
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
+
+fun signOut() {
+    Firebase.auth.signOut()
+    // Navegue de volta para a tela de login ou faça outra ação necessária
+}
+
+@Composable
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    navigateToLogin: () -> Unit,
+    navigateToCategories: () -> Unit,
+    navigateToSettings: () -> Unit,
+    navigateToUserProfile: () -> Unit // Parâmetro para navegar para o Perfil do Usuário
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        // Botão para ir para a tela de Login
+        Button(
+            onClick = navigateToLogin,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        ) {
+            Text(text = "Login")
+        }
+
+        // Botão para ir para a tela de Categorias
+        Button(
+            onClick = navigateToCategories,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        ) {
+            Text(text = "Categorias")
+        }
+
+        // Botão para ir para a tela de Configurações
+        Button(
+            onClick = navigateToSettings,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        ) {
+            Text(text = "Configurações")
+        }
+
+        // Botão para ir para a tela de Perfil do Usuário
+        Button(
+            onClick = navigateToUserProfile,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Perfil do Usuário")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HomeScreenPreview() {
+    PlantCodeV3Theme {
+        HomeScreen(
+            navigateToLogin = {},
+            navigateToCategories = {},
+            navigateToSettings = {},
+            navigateToUserProfile = {}
+        )
+    }
+}
