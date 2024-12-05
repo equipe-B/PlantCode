@@ -183,6 +183,27 @@ fun AddPlantScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Add a validation function to check if all fields are filled
+            fun isFormValid(
+                nome: String,
+                descricao: String,
+                categoria: String,
+                familia: String,
+                modoDeUso: String,
+                finalidades: String,
+                partesUsadas: String,
+                imageUri: Uri?
+            ): Boolean {
+                return nome.isNotBlank() &&
+                        descricao.isNotBlank() &&
+                        categoria.isNotBlank() &&
+                        familia.isNotBlank() &&
+                        modoDeUso.isNotBlank() &&
+                        finalidades.isNotBlank() &&
+                        partesUsadas.isNotBlank() &&
+                        imageUri != null
+            }
+
             // Submit Button
             Button(
                 onClick = {
@@ -246,7 +267,16 @@ fun AddPlantScreen(
                         ).show()
                     }
                 },
-                enabled = imageUri != null && !isLoading,
+                enabled = isFormValid(
+                    nome,
+                    descricao,
+                    categoria,
+                    familia,
+                    modoDeUso,
+                    finalidades,
+                    partesUsadas,
+                    imageUri
+                ) && !isLoading,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 if (isLoading) {
@@ -258,6 +288,8 @@ fun AddPlantScreen(
                     Text("Salvar Planta")
                 }
             }
+
+
 
             // Função para lidar com a conversão da imagem e o salvamento da planta
              fun handleImageConversionAndSave(

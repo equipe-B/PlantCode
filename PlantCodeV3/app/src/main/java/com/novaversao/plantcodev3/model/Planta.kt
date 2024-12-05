@@ -1,6 +1,5 @@
 package com.novaversao.plantcodev3.model
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import android.content.Context
@@ -15,9 +14,10 @@ data class Plantas(
     val familia: String,
     val modo_de_uso: String,
     val finalidades: String,
-    val partes_usadas: String
-
+    val partes_usadas: String,
 )
+
+
 class PlantaRepository {
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     //Trata-se da função de adicionar a planta ao repositório no Firestore Database
