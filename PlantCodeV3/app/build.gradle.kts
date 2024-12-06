@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -52,6 +53,14 @@ dependencies {
     implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
     // Adicionando a dependência de navegação
     implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation ("androidx.compose.material3:material3:1.0.1")
+    implementation ("androidx.compose.material:material-icons-extended:<version>")
+
+
+
+
+
+
 
 
 

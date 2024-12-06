@@ -82,20 +82,27 @@ fun AppNavigation() {
                     navigateToPlantasDeProtecao = { navController.navigate("plantas_de_protecao") },
                     navigateToAddPlant = { navController.navigate("add_plant") },
                     navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
-                    navigateToSettings = { navController.navigate("settings") } // Add this line
+                    navigateToSettings = { navController.navigate("settings") },
+                    navigateToHome = { navController.navigate("home") } // Adicionei esse parâmetro
                 )
             }
 
             composable("plantas_de_cura") {
                 PlantasDeCuraScreen(
-                    navigateBackToCategories = { navController.popBackStack("categories", false) }
-                )
+                    navigateBackToCategories = { navController.popBackStack("categories", false) },
+                    navigateToHome = { navController.navigate("home") },
+                    navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
+                    navigateToAddPlant = { navController.navigate("add_plant") },
+                    navigateToSettings = { navController.navigate("settings") }                )
             }
 
             composable("plantas_de_protecao") {
                 PlantasDeProtecaoScreen(
-                    navigateBackToCategories = { navController.popBackStack("categories", false) }
-                )
+                    navigateBackToCategories = { navController.popBackStack("categories", false) },
+                    navigateToHome = { navController.navigate("home") },
+                    navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
+                    navigateToAddPlant = { navController.navigate("add_plant") },
+                    navigateToSettings = { navController.navigate("settings") }                )
             }
 
             composable("settings") {
@@ -107,7 +114,12 @@ fun AppNavigation() {
             }
 
             composable("add_plant") {
-                AddPlantScreen(navigateBack = { navController.popBackStack() } )
+                AddPlantScreen(
+                    navigateToHome = { navController.navigate("home") },
+                    navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
+                    navigateToAddPlant = { /* Permanece na mesma tela */ },
+                    navigateToSettings = { navController.navigate("settings") }
+                )
             }
 
             composable("qr_code_scanner") {

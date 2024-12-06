@@ -3,49 +3,114 @@ package com.novaversao.plantcodev3
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
 
 @Composable
 fun PlantasDeProtecaoScreen(
     modifier: Modifier = Modifier,
-    navigateBackToCategories: () -> Unit // Função para voltar para a tela de categorias
+    navigateBackToCategories: () -> Unit,
+    navigateToHome: () -> Unit,
+    navigateToQRCodeScanner: () -> Unit,
+    navigateToAddPlant: () -> Unit,
+    navigateToSettings: () -> Unit
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
-        // Título da Tela
-        Text(
-            text = "Plantas de Proteção",
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(bottom = 32.dp)
+    val plantList: List<Int> = List(10) { it } // Lista fictícia de plantas
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Plano de fundo
+        Image(
+            painter = painterResource(id = R.drawable.app_background),
+            contentDescription = "Plano de fundo",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
         )
 
-        // Botão de Voltar
-        Button(
-            onClick = { navigateBackToCategories() }, // Volta para a tela de Categorias
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
         ) {
-            Text(text = "Voltar para Categorias")
+            // Título da Tela
+            Text(
+                text = "Plantas de Proteção",
+                style = MaterialTheme.typography.headlineMedium.copy(fontSize = 24.sp),
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 32.dp)
+            )
+
+            // Botão de Voltar
+            Button(
+                onClick = { navigateBackToCategories() },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            ) {
+                Text(text = "Voltar para Categorias", color = Color.White)
+            }
+
+            // Lista de Plantas de Proteção
+            LazyColumn(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                items(plantList) { index ->
+                    PlantCard(index = index)
+                }
+            }
         }
 
-        // Lista de Plantas de Proteção
-        LazyColumn(
-            modifier = Modifier.fillMaxSize()
+        // Barra de Navegação Inferior com ícones padrão
+        Row(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            items(10) { index -> // Vamos colocar 10 itens por enquanto
-                PlantCard(index = index)
+            IconButton(onClick = navigateToHome) {
+                Icon(
+                    imageVector = Icons.Filled.Home,
+                    contentDescription = "Início",
+                    tint = Color(0xFF4CAF50),
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+            IconButton(onClick = navigateToQRCodeScanner) {
+                Icon(
+                    imageVector = Icons.Filled.PhotoCamera,
+                    contentDescription = "Câmera",
+                    tint = Color(0xFF4CAF50),
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+            IconButton(onClick = navigateToAddPlant) {
+                Icon(
+                    imageVector = Icons.Filled.Add,
+                    contentDescription = "Adicionar Planta",
+                    tint = Color(0xFF4CAF50),
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+            IconButton(onClick = navigateToSettings) {
+                Icon(
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = "Configurações",
+                    tint = Color(0xFF4CAF50),
+                    modifier = Modifier.size(28.dp)
+                )
             }
         }
     }
@@ -62,7 +127,7 @@ fun PlantCard(index: Int) {
     ) {
         // Imagem da planta
         Image(
-            painter = painterResource(id = R.drawable.planta_protecao_image_png), // Ajuste a imagem conforme necessário
+            painter = painterResource(id = R.drawable.planta_protecao_image_png),
             contentDescription = null,
             modifier = Modifier.size(60.dp)
         )
@@ -73,8 +138,12 @@ fun PlantCard(index: Int) {
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Planta ${index + 1}", style = MaterialTheme.typography.bodyLarge)
-            Text(text = "Descrição breve da planta ${index + 1}.", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Planta ${index + 1}", style = MaterialTheme.typography.bodyLarge, color = Color.White)
+            Text(
+                text = "Descrição breve da planta ${index + 1}.",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.LightGray
+            )
         }
     }
 }
@@ -84,7 +153,11 @@ fun PlantCard(index: Int) {
 fun PlantasDeProtecaoScreenPreview() {
     PlantCodeV3Theme {
         PlantasDeProtecaoScreen(
-            navigateBackToCategories = {}
+            navigateBackToCategories = {},
+            navigateToHome = {},
+            navigateToQRCodeScanner = {},
+            navigateToAddPlant = {},
+            navigateToSettings = {}
         )
     }
 }

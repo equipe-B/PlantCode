@@ -2,9 +2,9 @@ package com.novaversao.plantcodev3
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.rounded.PhotoCamera // Import do ícone de câmera
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -12,9 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -56,9 +54,9 @@ fun HomeScreen(
                         onClick = { /* A funcionalidade de pesquisa será implementada depois */ }
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_search), // ícone da lupa
+                            imageVector = Icons.Filled.Search, // Ícone padrão de pesquisa
                             contentDescription = "Ícone de Pesquisa",
-                            modifier = Modifier.size(20.dp) // Ajuste do tamanho da lupa
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 },
@@ -70,7 +68,7 @@ fun HomeScreen(
 
             // Imagem ilustrativa de QR Code
             Image(
-                painter = painterResource(id = R.drawable.ic_qr_code_illustration), // Substitua pelo ID da imagem
+                painter = painterResource(id = R.drawable.ic_qr_code_illustration),
                 contentDescription = "Imagem de identificação com QR Code",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -121,7 +119,7 @@ fun HomeScreen(
                 modifier = Modifier.align(Alignment.Start).padding(bottom = 8.dp)
             )
             Image(
-                painter = painterResource(id = R.drawable.placeholder_last_viewed), // Substitua pelo ID da imagem
+                painter = painterResource(id = R.drawable.placeholder_last_viewed),
                 contentDescription = "Última planta visualizada",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -129,7 +127,7 @@ fun HomeScreen(
             )
         }
 
-        // Barra de Navegação Inferior com ícones
+        // Barra de Navegação Inferior com ícones padrão
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -139,34 +137,34 @@ fun HomeScreen(
         ) {
             IconButton(onClick = { /* Já está na Home */ }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_home), // Ícone de Início
+                    imageVector = Icons.Filled.Home,
                     contentDescription = "Início",
                     tint = Color(0xFF4CAF50),
-                    modifier = Modifier.size(28.dp) // Ajuste do tamanho do ícone
+                    modifier = Modifier.size(28.dp)
                 )
             }
             IconButton(onClick = navigateToQRCodeScanner) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_camera), // Ícone de Câmera
+                    imageVector = Icons.Rounded.PhotoCamera, // Ícone de câmera atualizado
                     contentDescription = "Câmera",
                     tint = Color(0xFF4CAF50),
-                    modifier = Modifier.size(28.dp) // Ajuste do tamanho do ícone
+                    modifier = Modifier.size(28.dp)
                 )
             }
             IconButton(onClick = navigateToAddPlant) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_add), // Ícone de Adicionar
+                    imageVector = Icons.Filled.Add,
                     contentDescription = "Adicionar",
                     tint = Color(0xFF4CAF50),
-                    modifier = Modifier.size(28.dp) // Ajuste do tamanho do ícone
+                    modifier = Modifier.size(28.dp)
                 )
             }
             IconButton(onClick = navigateToSettings) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_settings), // Ícone de Configurações
+                    imageVector = Icons.Filled.Settings,
                     contentDescription = "Configurações",
                     tint = Color(0xFF4CAF50),
-                    modifier = Modifier.size(28.dp) // Ajuste do tamanho do ícone
+                    modifier = Modifier.size(28.dp)
                 )
             }
         }
