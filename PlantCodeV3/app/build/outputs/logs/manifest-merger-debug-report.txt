@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-30:12
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:1-33:12
 MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\sergi\.gradle\caches\8.9\transforms\c7252aaa13f1599169c2d97f7cbe9205\transformed\navigation-common-2.6.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.6.0] C:\Users\sergi\.gradle\caches\8.9\transforms\ea38da15b1910e26c945c9c038245d7f\transformed\navigation-runtime-2.6.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.6.0] C:\Users\sergi\.gradle\caches\8.9\transforms\739cdba0760021a1684322dc0ecbf1ad\transformed\navigation-common-ktx-2.6.0\AndroidManifest.xml:17:1-22:12
@@ -111,17 +111,17 @@ MERGED from [io.grpc:grpc-android:1.62.2] C:\Users\sergi\.gradle\caches\8.9\tran
 MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\sergi\.gradle\caches\8.9\transforms\3226646ccb20760ae8450ec637208832\transformed\core-common-2.0.3\AndroidManifest.xml:2:1-21:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\sergi\.gradle\caches\8.9\transforms\8b7881017e43a608179f48358f217382\transformed\protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
 	package
-		INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:4:5-67
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:5:5-67
 MERGED from [com.google.firebase:firebase-auth:23.1.0] C:\Users\sergi\.gradle\caches\8.9\transforms\04f0c72b937ca512d4f78c95524de385\transformed\firebase-auth-23.1.0\AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-auth:23.1.0] C:\Users\sergi\.gradle\caches\8.9\transforms\04f0c72b937ca512d4f78c95524de385\transformed\firebase-auth-23.1.0\AndroidManifest.xml:25:5-67
 MERGED from [com.google.android.recaptcha:recaptcha:18.5.1] C:\Users\sergi\.gradle\caches\8.9\transforms\3cb263bd7eabce972d5d3b6d850c5dee\transformed\recaptcha-18.5.1\AndroidManifest.xml:7:5-67
@@ -129,10 +129,10 @@ MERGED from [com.google.android.recaptcha:recaptcha:18.5.1] C:\Users\sergi\.grad
 MERGED from [com.google.firebase:firebase-firestore:25.1.1] C:\Users\sergi\.gradle\caches\8.9\transforms\1d0a0cc8c7a9ee2449e06d6569c3edb6\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:11:5-67
 MERGED from [com.google.firebase:firebase-firestore:25.1.1] C:\Users\sergi\.gradle\caches\8.9\transforms\1d0a0cc8c7a9ee2449e06d6569c3edb6\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:11:5-67
 	android:name
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:4:22-64
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:6:5-28:19
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:6:5-28:19
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:7:5-31:19
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:7:5-31:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\sergi\.gradle\caches\8.9\transforms\4dc763ff0504ff79c2cc12e479caffc4\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\sergi\.gradle\caches\8.9\transforms\4dc763ff0504ff79c2cc12e479caffc4\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\sergi\.gradle\caches\8.9\transforms\4b6628341b3f9ebbf7f45822d3325d16\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
@@ -186,51 +186,57 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\se
 MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\sergi\.gradle\caches\8.9\transforms\3226646ccb20760ae8450ec637208832\transformed\core-common-2.0.3\AndroidManifest.xml:11:5-19:19
 MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\sergi\.gradle\caches\8.9\transforms\3226646ccb20760ae8450ec637208832\transformed\core-common-2.0.3\AndroidManifest.xml:11:5-19:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.0] C:\Users\sergi\.gradle\caches\8.9\transforms\3965639fcf957757ec0f17b8e4176ce9\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:12:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:10:9-54
 	android:roundIcon
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:12:9-54
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:13:9-54
 	tools:targetApi
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:15:9-29
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:16:9-29
 	android:icon
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:10:9-43
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:7:9-35
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:14:9-49
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:15:9-49
 	android:dataExtractionRules
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:8:9-65
-activity#com.novaversao.plantcodev3.MainActivity
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:17:9-27:20
-	android:label
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:20:13-45
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:9:9-65
+activity#com.novaversao.plantcodev3.QRCode_functions
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:17:9-19:40
 	android:exported
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:19:13-36
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:18:13-45
+activity#com.novaversao.plantcodev3.MainActivity
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:20:9-30:20
+	android:label
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:23:13-45
+	android:exported
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:22:13-36
 	android:theme
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:21:13-53
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:24:13-53
 	android:name
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:18:13-41
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:22:13-26:29
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:23:17-69
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:23:25-66
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:25:17-77
+ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
-		ADDED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml:28:27-74
 uses-sdk
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\sergi\.gradle\caches\8.9\transforms\c7252aaa13f1599169c2d97f7cbe9205\transformed\navigation-common-2.6.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\sergi\.gradle\caches\8.9\transforms\c7252aaa13f1599169c2d97f7cbe9205\transformed\navigation-common-2.6.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-runtime:2.6.0] C:\Users\sergi\.gradle\caches\8.9\transforms\ea38da15b1910e26c945c9c038245d7f\transformed\navigation-runtime-2.6.0\AndroidManifest.xml:20:5-44
@@ -446,9 +452,9 @@ MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\ser
 	tools:overrideLibrary
 		ADDED from [com.google.firebase:firebase-auth:23.1.0] C:\Users\sergi\.gradle\caches\8.9\transforms\04f0c72b937ca512d4f78c95524de385\transformed\firebase-auth-23.1.0\AndroidManifest.xml:23:9-148
 	android:targetSdkVersion
-		INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\sergi\AndroidStudioProjects\plant_marcio\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\sergi\AndroidStudioProjects\Developer_branch\PlantCode\PlantCodeV3\app\src\main\AndroidManifest.xml
 activity#androidx.compose.ui.tooling.PreviewActivity
 ADDED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\sergi\.gradle\caches\8.9\transforms\19845f7dc9cd48278a72fdc4a6663e2f\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
 	android:exported

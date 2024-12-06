@@ -1,11 +1,11 @@
-#Mon Dec 02 22:14:53 AMT 2024
-base.0=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
-base.3=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.4=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.5=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
-base.6=C\:\\Users\\sergi\\AndroidStudioProjects\\plant_marcio\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes4.dex
+#Thu Dec 05 19:11:08 AMT 2024
+base.0=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+base.3=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.4=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.5=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+base.6=C\:\\Users\\sergi\\AndroidStudioProjects\\Developer_branch\\PlantCode\\PlantCodeV3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes4.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=3/classes.dex

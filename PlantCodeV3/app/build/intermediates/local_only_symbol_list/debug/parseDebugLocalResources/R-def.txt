@@ -16,6 +16,7 @@ drawable planta_cura_image_png
 drawable planta_protecao_image_png
 id main
 layout activity_login_teste
+layout activity_qrcode_functions
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap logo_png

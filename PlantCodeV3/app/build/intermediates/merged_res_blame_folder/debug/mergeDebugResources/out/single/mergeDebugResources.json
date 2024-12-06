@@ -100,12 +100,12 @@
         "source": "com.novaversao.plantcodev3.app-main-75:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.novaversao.plantcodev3.app-debug-73:/mipmap-mdpi_placeholder_user_png_round.webp.flat",
-        "source": "com.novaversao.plantcodev3.app-main-75:/mipmap-mdpi/placeholder_user_png_round.webp"
-    },
-    {
         "merged": "com.novaversao.plantcodev3.app-debug-73:/mipmap-anydpi-v26_planta_protecao_image_png.xml.flat",
         "source": "com.novaversao.plantcodev3.app-main-75:/mipmap-anydpi-v26/planta_protecao_image_png.xml"
+    },
+    {
+        "merged": "com.novaversao.plantcodev3.app-debug-73:/mipmap-mdpi_placeholder_user_png_round.webp.flat",
+        "source": "com.novaversao.plantcodev3.app-main-75:/mipmap-mdpi/placeholder_user_png_round.webp"
     },
     {
         "merged": "com.novaversao.plantcodev3.app-debug-73:/drawable_ic_launcher_foreground.xml.flat",
@@ -138,6 +138,10 @@
     {
         "merged": "com.novaversao.plantcodev3.app-debug-73:/drawable_google_logo.xml.flat",
         "source": "com.novaversao.plantcodev3.app-main-75:/drawable/google_logo.xml"
+    },
+    {
+        "merged": "com.novaversao.plantcodev3.app-debug-73:/layout_activity_qrcode_functions.xml.flat",
+        "source": "com.novaversao.plantcodev3.app-main-75:/layout/activity_qrcode_functions.xml"
     },
     {
         "merged": "com.novaversao.plantcodev3.app-debug-73:/mipmap-hdpi_planta_protecao_image_png.webp.flat",
