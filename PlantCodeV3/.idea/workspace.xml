@@ -95,7 +95,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "developer",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sergi/AndroidStudioProjects/sergio_Qrcodes/PlantCode/app"
+    "last_opened_file_path": "C:/Users/sergi/AndroidStudioProjects/TesteGit/PlantCode/PlantCodeV3"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -190,8 +190,27 @@
       <option name="project" value="LOCAL" />
       <updated>1733429509635</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Feat: QRCode Scan and Generate functions">
+      <option name="closed" value="true" />
+      <created>1733444171972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733444171972</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Feat: QRCode Scan and Generate functions" />
