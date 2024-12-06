@@ -1,5 +1,6 @@
 package com.novaversao.plantcodev3
 import android.net.Uri
+import android.graphics.Color as AndroidColor
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -27,6 +28,12 @@ import android.util.Log
 import android.widget.Toast
 import android.content.Context
 import com.novaversao.plantcodev3.model.handleImageConversionAndSave
+import java.io.ByteArrayOutputStream
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.WriterException
+import android.graphics.Bitmap
+import com.google.zxing.qrcode.QRCodeWriter
+import com.google.zxing.common.BitMatrix
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
@@ -203,6 +210,33 @@ fun AddPlantScreen(
                         partesUsadas.isNotBlank() &&
                         imageUri != null
             }
+            // Função para gerar QR Code em Base64
+            fun generateQRCodeBase64(data: String): String? {
+                return try {
+                    val bitMatrix: BitMatrix = QRCodeWriter().encode(data, BarcodeFormat.QR_CODE, 200, 200)
+                    val width = bitMatrix.width
+                    val height = bitMatrix.height
+                    val pixels = IntArray(width * height)
+
+                    for (y in 0 until height) {
+                        for (x in 0 until width) {
+                            pixels[y * width + x] = if (bitMatrix[x, y]) AndroidColor.BLACK else AndroidColor.WHITE
+                        }
+                    }
+
+                    val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+                    bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
+
+                    // Converte o bitmap para Base64
+                    val byteArrayOutputStream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                    val byteArray = byteArrayOutputStream.toByteArray()
+                    Base64.encodeToString(byteArray, Base64.DEFAULT)
+                } catch (e: Exception) {
+                    Log.e("QRCodeGeneration", "Erro ao gerar QR Code", e)
+                    null
+                }
+            }
 
             // Submit Button
             Button(
@@ -217,20 +251,27 @@ fun AddPlantScreen(
                             // Define o estado de sucesso após a conversão
                             isImageConverted = true
 
+                            // Gera o QR Code em Base64
+                            val qrCodeData = nome // ou qualquer outra string que você queira usar
+                            val base64QRCode = generateQRCodeBase64(qrCodeData)
+
                             // Chama a função para lidar com a validação e salvamento da planta
                             handleImageConversionAndSave(
                                 base64Image,
+                                base64QRCode ?: "", // Passa o QR Code gerado (ou uma string vazia se falhar)
                                 context,
                                 plantaRepository,
                                 Plantas(
                                     imagemBase64 = base64Image,
-                                    descricao = descricao,
+                                    qrcodeBase64 = "",
                                     nome = nome,
+                                    descricao = descricao,
                                     categoria = categoria,
                                     familia = familia,
                                     modo_de_uso = modoDeUso,
                                     finalidades = finalidades,
                                     partes_usadas = partesUsadas,
+
                                 ),
                                 navigateBack
                             )
@@ -294,6 +335,7 @@ fun AddPlantScreen(
             // Função para lidar com a conversão da imagem e o salvamento da planta
              fun handleImageConversionAndSave(
                 base64Image: String,
+                qrcodeBase64: String,
                 context: Context,
                 plantaRepository: PlantaRepository,
                 novaPlanta: Plantas,
@@ -311,7 +353,7 @@ fun AddPlantScreen(
                 }
 
                 // Chama a função AdicionarPlanta com um callback
-                plantaRepository.AdicionarPlanta(novaPlanta, base64Image) { plantaId ->
+                plantaRepository.AdicionarPlanta(novaPlanta, base64Image, qrcodeBase64) { plantaId ->
                     if (plantaId != null) {
                         // A planta foi adicionada com sucesso
                         Toast.makeText(context, "Planta adicionada com sucesso!", Toast.LENGTH_SHORT).show()

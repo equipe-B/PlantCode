@@ -64,6 +64,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.0.0")
     implementation("io.coil-kt:coil-compose:2.2.2") // Verifique se há uma versão mais recente
     implementation ("androidx.compose.material3:material3:1.0.0-alpha01")
+    implementation ("com.google.zxing:core:3.4.1")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
