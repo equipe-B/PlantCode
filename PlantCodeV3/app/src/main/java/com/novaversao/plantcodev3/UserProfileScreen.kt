@@ -8,11 +8,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserProfileScreen(
     modifier: Modifier = Modifier,
@@ -44,7 +47,13 @@ fun UserProfileScreen(
             value = userName,
             onValueChange = { userName = it },
             label = { Text("Nome") },
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+            colors = TextFieldDefaults.textFieldColors( // Usando a API estável
+                containerColor = Color.White,
+                focusedIndicatorColor = Color(0xFF4CAF50),
+                unfocusedIndicatorColor = Color.Gray
+            ),
+            textStyle = TextStyle(color = Color.Black) // Definindo a cor do texto
         )
 
         // Campo para o E-mail do Usuário
@@ -52,7 +61,15 @@ fun UserProfileScreen(
             value = userEmail,
             onValueChange = { userEmail = it },
             label = { Text("E-mail") },
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            colors = TextFieldDefaults.textFieldColors( // Usando a API estável
+                containerColor = Color.White,
+                focusedIndicatorColor = Color(0xFF4CAF50),
+                unfocusedIndicatorColor = Color.Gray
+            ),
+            textStyle = TextStyle(color = Color.Black) // Definindo a cor do texto
         )
 
         // Botão para Salvar Alterações
@@ -60,17 +77,21 @@ fun UserProfileScreen(
             onClick = {
                 println("Alterações salvas: Nome=$userName, E-mail=$userEmail")
             },
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
         ) {
-            Text(text = "Salvar Alterações")
+            Text(text = "Salvar Alterações", color = Color.White)
         }
 
         // Botão para Voltar
         Button(
             onClick = navigateBack,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
         ) {
-            Text(text = "Voltar")
+            Text(text = "Voltar", color = Color.White)
         }
     }
 }

@@ -70,7 +70,7 @@ fun AppNavigation() {
                     navigateToCategories = { navController.navigate("categories") },
                     navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
                     navigateToAddPlant = { navController.navigate("add_plant") },
-                    navigateToSettings = { navController.navigate("settings") }, // Aqui está o parâmetro correto
+                    navigateToSettings = { navController.navigate("settings") },
                     navigateToPlantasDeCura = { navController.navigate("plantas_de_cura") },
                     navigateToPlantasDeProtecao = { navController.navigate("plantas_de_protecao") }
                 )
@@ -83,7 +83,7 @@ fun AppNavigation() {
                     navigateToAddPlant = { navController.navigate("add_plant") },
                     navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
                     navigateToSettings = { navController.navigate("settings") },
-                    navigateToHome = { navController.navigate("home") } // Adicionei esse parâmetro
+                    navigateToHome = { navController.navigate("home") }
                 )
             }
 
@@ -93,7 +93,8 @@ fun AppNavigation() {
                     navigateToHome = { navController.navigate("home") },
                     navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
                     navigateToAddPlant = { navController.navigate("add_plant") },
-                    navigateToSettings = { navController.navigate("settings") }                )
+                    navigateToSettings = { navController.navigate("settings") }
+                )
             }
 
             composable("plantas_de_protecao") {
@@ -102,14 +103,14 @@ fun AppNavigation() {
                     navigateToHome = { navController.navigate("home") },
                     navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
                     navigateToAddPlant = { navController.navigate("add_plant") },
-                    navigateToSettings = { navController.navigate("settings") }                )
+                    navigateToSettings = { navController.navigate("settings") }
+                )
             }
 
             composable("settings") {
                 SettingsScreen(
-                    navigateBack = { navController.popBackStack() } // Navegação de volta para a tela anterior
-
-
+                    navigateBack = { navController.popBackStack() },
+                    navigateToUserProfile = { navController.navigate("profile") } // Adicionado para navegação ao perfil do usuário
                 )
             }
 
@@ -127,6 +128,12 @@ fun AppNavigation() {
                     onScanResult = { result ->
                         println("QR Code Scan Result: $result")
                     }
+                )
+            }
+
+            composable("profile") {
+                UserProfileScreen(
+                    navigateBack = { navController.popBackStack() }
                 )
             }
         }
