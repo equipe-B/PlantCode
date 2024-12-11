@@ -13,14 +13,29 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
+import android.app.Activity
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.LocalContext
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
+    onLoginSuccess: () -> Unit,
     navigateToRegister: () -> Unit,
     navigateToForgotPassword: () -> Unit,
     navigateToHome: () -> Unit,
@@ -29,6 +44,60 @@ fun LoginScreen(
     // Estados para capturar os dados de login e senha
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    val auth = Firebase.auth
+    var isLoading by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+
+    // Configuração do Google Sign-In
+    val gso = remember {
+        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(context.getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+    }
+
+    val googleSignInClient = remember {
+        GoogleSignIn.getClient(context, gso)
+    }
+
+    // Launcher para resultado de login do Google
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                account?.let {
+                    firebaseAuthWithGoogle(
+                        account.idToken!!,
+                        auth,
+                        onLoginSuccess = {
+                            isLoading = false
+                            onLoginSuccess()
+                        },
+                        onError = { message ->
+                            isLoading = false
+                            errorMessage = message
+                        }
+                    )
+                }
+            } catch (e: ApiException) {
+                isLoading = false
+                errorMessage = "Erro de autenticação com Google: ${e.message}"
+                Log.e("GoogleSignIn", "Erro de login", e)
+            }
+        }
+    }
+
+    fun signInWithGoogle() {
+        isLoading = true
+        val signInIntent = googleSignInClient.signInIntent
+        launcher.launch(signInIntent)
+    }
+
+
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -53,7 +122,7 @@ fun LoginScreen(
             TextField(
                 value = username,
                 onValueChange = { username = it },
-                label = { Text("Usuário") },
+                label = { Text("E-mail") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 16.dp)
@@ -72,7 +141,22 @@ fun LoginScreen(
 
             // Botão "Acessar"
             Button(
-                onClick = navigateToHome,
+                onClick = {
+                    if (username.isEmpty() || password.isEmpty()) {
+                        Toast.makeText(context, "Por favor, insira seu usuário e senha.", Toast.LENGTH_LONG).show()
+                        return@Button
+                    }
+                    // Realiza a autenticação com Firebase
+                    auth.signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                navigateToHome()
+                            }
+                            else {
+                                Toast.makeText(context, "Login ou senha não cadastrados", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -81,10 +165,32 @@ fun LoginScreen(
                 Text(text = "Acessar", color = Color.White)
             }
 
+
+            OutlinedButton(
+                onClick = {signInWithGoogle() }, enabled = !isLoading) {
+                if (isLoading) {
+                    CircularProgressIndicator()
+                }
+                else {
+                    Image(
+                        painter = painterResource(id = R.drawable.google_logo),
+                        contentDescription = "Google Logo",
+                        modifier = Modifier.size(24.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Continuar com Google")
+                }
+                errorMessage?.let {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+            }
             // Texto clicável para "Cadastrar"
             Text(
                 text = "Cadastrar",
-                color = Color(0xFF4CAF50),
+                color = Color(0xFFA4C5C0),
                 modifier = Modifier.clickable(onClick = navigateToRegister).padding(bottom = 8.dp)
             )
 
@@ -105,6 +211,58 @@ fun LoginScreen(
     }
 }
 
+fun saveUserToFirestore(user: FirebaseUser, onSuccess: () -> Unit, onError: (String) -> Unit) {
+    val firestore = FirebaseFirestore.getInstance()
+    val userRef = firestore.collection("users").document(user.uid)
+
+    val userData = hashMapOf(
+        "uid" to user.uid,
+        "email" to (user.email ?: ""),
+        "displayName" to (user.displayName ?: ""),
+        "photoUrl" to (user.photoUrl?.toString() ?: ""),
+        "createdAt" to FieldValue.serverTimestamp()
+    )
+
+    userRef.set(userData, SetOptions.merge())
+        .addOnSuccessListener {
+            onSuccess()
+        }
+        .addOnFailureListener { e ->
+            onError(e.message ?: "Erro ao salvar usuário")
+        }
+}
+
+
+fun firebaseAuthWithGoogle(
+    idToken: String,
+    auth: FirebaseAuth,
+    onLoginSuccess: () -> Unit, onError: (String) -> Unit) {
+    val credential = GoogleAuthProvider.getCredential(idToken, null)
+    auth.signInWithCredential(credential)
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                // Login bem-sucedido
+                val user = auth.currentUser
+                user?.let {
+                    saveUserToFirestore(
+                        user,
+                        onSuccess = {
+                            onLoginSuccess()
+                        },
+                        onError = { errorMessage ->
+                            onError(errorMessage)
+                        }
+                    )
+                } ?: onError("Usuário não encontrado")
+            } else {
+                // Tratamento de erro
+                onError("Falha na autenticação: ${task.exception?.message}")
+            }
+        }
+}
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
@@ -113,7 +271,8 @@ fun LoginScreenPreview() {
             navigateToRegister = {},
             navigateToForgotPassword = {},
             navigateToHome = {},
-            navigateBackToAccessType = {}
+            navigateBackToAccessType = {},
+            onLoginSuccess = {}
         )
     }
 }

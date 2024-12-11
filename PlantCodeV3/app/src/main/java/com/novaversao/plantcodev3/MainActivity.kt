@@ -1,5 +1,6 @@
 package com.novaversao.plantcodev3
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
+import com.novaversao.plantcodev3.model.PlantaRepository
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +28,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AppNavigation() {
     val navController: NavHostController = rememberNavController()
@@ -39,7 +42,7 @@ fun AppNavigation() {
             composable("access_type") {
                 AccessTypeScreen(
                     navigateToAdminLogin = { navController.navigate("login") },
-                    navigateToVisitorLogin = { navController.navigate("login") }
+                    navigateToVisitorLogin = { navController.navigate("home") }
                 )
             }
 
@@ -48,14 +51,14 @@ fun AppNavigation() {
                     navigateToRegister = { navController.navigate("register") },
                     navigateToForgotPassword = { navController.navigate("forgot_password") },
                     navigateToHome = { navController.navigate("home") },
-                    navigateBackToAccessType = { navController.popBackStack("access_type", false) }
+                    navigateBackToAccessType = { navController.popBackStack("access_type", false) },
+                    onLoginSuccess = { navController.navigate("home") }
                 )
             }
 
             composable("register") {
                 RegisterScreen(
-                    navigateBackToLogin = { navController.popBackStack() },
-                    navigateToHome = { navController.navigate("home") }
+                    navigateBackToLogin = { navController.popBackStack() }
                 )
             }
 
@@ -115,20 +118,14 @@ fun AppNavigation() {
             }
 
             composable("add_plant") {
+                val plantaRepository = PlantaRepository()
                 AddPlantScreen(
+                    plantaRepository = plantaRepository,
                     navigateToHome = { navController.navigate("home") },
-                    navigateToQRCodeScanner = { navController.navigate("qr_code_scanner") },
-                    navigateToAddPlant = { /* Permanece na mesma tela */ },
-                    navigateToSettings = { navController.navigate("settings") }
                 )
             }
-
             composable("qr_code_scanner") {
-                QRCodeScannerScreen(
-                    onScanResult = { result ->
-                        println("QR Code Scan Result: $result")
-                    }
-                )
+                QRCodeScannerScreen(navController)
             }
 
             composable("profile") {

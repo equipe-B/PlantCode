@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -50,12 +51,19 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
+    implementation("com.google.firebase:firebase-auth:23.1.0")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     // Adicionando a dependência de navegação
     implementation("androidx.navigation:navigation-compose:2.6.0")
     implementation ("androidx.compose.material3:material3:1.0.1")
     implementation ("androidx.compose.material:material-icons-extended:<version>")
-
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("com.google.zxing:core:3.4.1")
+    implementation(libs.firebase.firestore.ktx)
+    implementation("com.google.firebase:firebase-firestore:25.1.1")
+    implementation("com.google.android.gms:play-services-auth:21.1.1")
+    implementation(libs.firebase.firestore)
+    implementation("com.google.firebase:firebase-storage:21.0.1")
 
 
 

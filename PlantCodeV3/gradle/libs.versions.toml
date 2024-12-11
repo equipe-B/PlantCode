@@ -10,6 +10,9 @@ activityCompose = "1.9.3"
 composeBom = "2024.04.01"
 navigation = "2.6.0"
 compose-material = "1.4.3"
+firebaseFirestoreKtx = "25.1.1"
+googleGmsGoogleServices = "4.4.2"
+firebaseFirestore = "25.1.1"
 
 
 [libraries]
@@ -30,9 +33,12 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose-material" }
 androidx-navegation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

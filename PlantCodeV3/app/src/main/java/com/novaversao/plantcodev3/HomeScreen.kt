@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.novaversao.plantcodev3.QRCodeScannerScreen
 import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
 
 @Composable

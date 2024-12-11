@@ -23,11 +23,9 @@ import com.novaversao.plantcodev3.ui.theme.PlantCodeV3Theme
 fun RegisterScreen(
     modifier: Modifier = Modifier,
     navigateBackToLogin: () -> Unit, // Função para voltar à tela de Login
-    navigateToHome: () -> Unit // Navega para a tela inicial após cadastro
 ) {
     // Estados para capturar os dados de cadastro
     var email by remember { mutableStateOf("") }
-    var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
 
@@ -36,13 +34,13 @@ fun RegisterScreen(
     fun validateAndRegister() {
         when {
             email.isEmpty() -> Toast.makeText(context, "E-mail é obrigatório", Toast.LENGTH_SHORT).show()
-            username.isEmpty() -> Toast.makeText(context, "Nome de usuário é obrigatório", Toast.LENGTH_SHORT).show()
+            //username.isEmpty() -> Toast.makeText(context, "Nome de usuário é obrigatório", Toast.LENGTH_SHORT).show()
             password.isEmpty() -> Toast.makeText(context, "Senha é obrigatória", Toast.LENGTH_SHORT).show()
             confirmPassword.isEmpty() -> Toast.makeText(context, "Confirme a senha", Toast.LENGTH_SHORT).show()
             password != confirmPassword -> Toast.makeText(context, "As senhas não coincidem", Toast.LENGTH_SHORT).show()
             else -> {
                 Toast.makeText(context, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show()
-                navigateToHome() // Navega para a tela inicial após sucesso
+                navigateBackToLogin() // Navega para a tela inicial após sucesso
             }
         }
     }
@@ -76,14 +74,14 @@ fun RegisterScreen(
             )
 
             // Campo de Nome de Usuário
-            TextField(
+            /*TextField(
                 value = username,
                 onValueChange = { username = it },
                 modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                 label = { Text("Nome de Usuário") },
                 singleLine = true
             )
-
+            */
             // Campo de Senha
             TextField(
                 value = password,
@@ -131,7 +129,6 @@ fun RegisterScreenPreview() {
     PlantCodeV3Theme {
         RegisterScreen(
             navigateBackToLogin = {},
-            navigateToHome = {}
         )
     }
 }
